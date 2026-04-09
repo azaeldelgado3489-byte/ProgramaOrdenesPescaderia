@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PescaderiaAPP.MainPage"
+             Title="Pescaderia Puerto Vallarta">
+
+    <ScrollView>
+        <VerticalStackLayout x:Name="PaginaLayout" Padding="16" Spacing="10">
+
+            <!-- MESA -->
+            <Label Text="Da click para seleccionar una mesa"
+       FontSize="13"
+       TextColor="#5C6BC0"/>
+
+            <Border BackgroundColor="#EEF2FF"
+        Stroke="#3949AB"
+        StrokeThickness="1.5"
+        Padding="8,4">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="8"/>
+                </Border.StrokeShape>
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMesaBorderTapped"/>
+                </Border.GestureRecognizers>
+                <Picker x:Name="MesaPicker"
+            Title="— ▼ —"
+            FontAttributes="Bold"
+            FontSize="15"
+            TextColor="#1A237E"
+            TitleColor="#9FA8DA"
+            HorizontalOptions="Fill">
+                    <Picker.Items>
+                        <x:String>Mesa 1</x:String>
+                        <x:String>Mesa 2</x:String>
+                        <x:String>Mesa 3</x:String>
+                        <x:String>Mesa 4</x:String>
+                        <x:String>Mesa 5</x:String>
+                        <x:String>Mesa 6</x:String>
+                        <x:String>Mesa 7</x:String>
+                    </Picker.Items>
+                </Picker>
+            </Border>
+
+            <Label Text="Menu" FontSize="18" FontAttributes="Bold" Margin="0,10,0,0"/>
+
+            <!--  FILETES  -->
+            <Label Text="- Filetes -" FontSize="17" FontAttributes="Bold"
+                   BackgroundColor="#1565C0" TextColor="White" Padding="8,4"/>
+
+            <Border BackgroundColor="#F5F8FF" Stroke="#C5CAE9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Medio Filete" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$80" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Medio Filete|80"
+                            WidthRequest="48" BackgroundColor="#1976D2" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F5F8FF" Stroke="#C5CAE9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Filete Entero" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$110" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Filete Entero|110"
+                            WidthRequest="48" BackgroundColor="#1976D2" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F5F8FF" Stroke="#C5CAE9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Filete al Vapor" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$120" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Filete al Vapor|120"
+                            WidthRequest="48" BackgroundColor="#1976D2" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <!--  CALDOS  -->
+            <Label Text="Caldos" FontSize="17" FontAttributes="Bold"
+                   BackgroundColor="#BF360C" TextColor="White" Padding="8,4" Margin="0,8,0,0"/>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coco Caldo" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$30" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coco Caldo|30"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Caldo sin Pieza" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$50" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Caldo sin Pieza|50"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Caldo con Pieza" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$75" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Caldo con Pieza|75"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coco con Pieza" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$65" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coco con Pieza|65"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Caldo con Filete" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$75" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Caldo con Filete|75"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coco de Filete" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$65" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coco de Filete|65"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Caldo Camarón" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$75" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Caldo Camarón|75"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coco Camarón" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$45" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coco Camarón|45"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Sopa de Mariscos" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$75" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Sopa de Mariscos|75"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFF3F0" Stroke="#FFCCBC" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coco Mariscos" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$45" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coco Mariscos|45"
+                            WidthRequest="48" BackgroundColor="#E64A19" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <!--  BARRA FRÍA  -->
+            <Label Text="Barra Fría" FontSize="17" FontAttributes="Bold"
+                   BackgroundColor="#00695C" TextColor="White" Padding="8,4" Margin="0,8,0,0"/>
+
+            <Border BackgroundColor="#F0FBF8" Stroke="#B2DFDB" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Ceviche" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$65" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Ceviche|65"
+                            WidthRequest="48" BackgroundColor="#00897B" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F0FBF8" Stroke="#B2DFDB" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coctel Camarón" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$75" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coctel Camarón|75"
+                            WidthRequest="48" BackgroundColor="#00897B" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F0FBF8" Stroke="#B2DFDB" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coctel Camarón Grande" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$130" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coctel Camarón Grande|130"
+                            WidthRequest="48" BackgroundColor="#00897B" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F0FBF8" Stroke="#B2DFDB" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Tostada Camarón" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$45" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Tostada Camarón|45"
+                            WidthRequest="48" BackgroundColor="#00897B" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F0FBF8" Stroke="#B2DFDB" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Tostada Ceviche" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$40" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Tostada Ceviche|40"
+                            WidthRequest="48" BackgroundColor="#00897B" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <!-- ═══ COMPLEMENTOS ═══ -->
+            <Label Text="Complementos" FontSize="17" FontAttributes="Bold"
+                   BackgroundColor="#F57F17" TextColor="White" Padding="8,4" Margin="0,8,0,0"/>
+
+            <Border BackgroundColor="#FFFDE7" Stroke="#FFE082" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Orden de Papas" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$40" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Orden de Papas|40"
+                            WidthRequest="48" BackgroundColor="#F9A825" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#FFFDE7" Stroke="#FFE082" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Aros de Cebolla" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$45" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Aros de Cebolla|45"
+                            WidthRequest="48" BackgroundColor="#F9A825" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <!--  BEBIDAS  -->
+            <Label Text="Bebidas" FontSize="17" FontAttributes="Bold"
+                   BackgroundColor="#4527A0" TextColor="White" Padding="8,4" Margin="0,8,0,0"/>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coca Cola" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$25" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coca Cola|25"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Coca Zero" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$30" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Coca Zero|30"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Fuze Tea" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$35" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Fuze Tea|35"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Ponche" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$25" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Ponche|25"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Agua Embotellada" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$25" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Agua Embotellada|25"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Sprite" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$20" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Sprite|20"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <Border BackgroundColor="#F3F0FF" Stroke="#D1C4E9" StrokeThickness="1" Padding="10,8">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10"/>
+                </Border.StrokeShape>
+                <Grid ColumnDefinitions="*,Auto,Auto">
+                    <Label Grid.Column="0" Text="Fresca" VerticalOptions="Center" FontSize="14"/>
+                    <Label Grid.Column="1" Text="$20" VerticalOptions="Center" Margin="0,0,8,0" TextColor="Gray"/>
+                    <Button Grid.Column="2" Text="+" Clicked="OnAgregar" CommandParameter="Fresca|20"
+                            WidthRequest="48" BackgroundColor="#512DA8" TextColor="White"/>
+                </Grid>
+            </Border>
+
+            <!--  RESUMEN Y TOTAL -->
+            <BoxView Color="LightGray" HeightRequest="1" Margin="0,16,0,0"/>
+            <Label Text="Orden actual" FontSize="16" FontAttributes="Bold"/>
+            <VerticalStackLayout x:Name="ResumenStack" Spacing="6"/>
+
+            <Label x:Name="TotalLabel"
+                   Text="Total: $0.00"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="DarkGreen"
+                   Margin="0,4,0,0"/>
+
+            <HorizontalStackLayout Spacing="10" Margin="0,8,0,24">
+                <Button Text="Limpiar"
+                        Clicked="OnLimpiarOrden"
+                        BackgroundColor="OrangeRed"
+                        TextColor="White"
+                        WidthRequest="130"/>
+                <Button Text="Confirmar orden"
+                        Clicked="OnConfirmarOrden"
+                        BackgroundColor="SeaGreen"
+                        TextColor="White"
+                        WidthRequest="160"/>
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PescaderiaAPP.HistorialPage"
+             Title="Historial">
+
+    <VerticalStackLayout x:Name="PaginaLayout" Padding="16" Spacing="12">
+
+        <Label x:Name="SinHistorialLabel"
+               Text="Aún no hay órdenes cerradas."
+               FontSize="16"
+               TextColor="Gray"
+               HorizontalOptions="Center"
+               Margin="0,40,0,0"/>
+
+        <Button Text="🗑️ Limpiar historial"
+                x:Name="LimpiarBtn"
+                Clicked="OnLimpiarHistorial"
+                BackgroundColor="OrangeRed"
+                TextColor="White"
+                HorizontalOptions="End"
+                IsVisible="False"/>
+
+        <CollectionView x:Name="HistorialCollection"
+                        SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border Margin="0,0,0,10"
+                            Padding="0"
+                            BackgroundColor="White"
+                            Stroke="#E0E0E0"
+                            StrokeThickness="1">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12"/>
+                        </Border.StrokeShape>
+                        <VerticalStackLayout Spacing="0">
+
+                            <!-- Encabezado -->
+                            <Grid ColumnDefinitions="*,Auto"
+                                  BackgroundColor="#263238"
+                                  Padding="12,8">
+                                <Label Grid.Column="0"
+                                       Text="{Binding Mesa}"
+                                       FontSize="18"
+                                       FontAttributes="Bold"
+                                       TextColor="White"
+                                       VerticalOptions="Center"/>
+                                <Label Grid.Column="1"
+                                       Text="{Binding HoraFormato}"
+                                       FontSize="13"
+                                       TextColor="#B0BEC5"
+                                       VerticalOptions="Center"/>
+                            </Grid>
+
+                            <!-- Detalle -->
+                            <VerticalStackLayout Padding="12,10" Spacing="8">
+                                <Label Text="{Binding Resumen}"
+                                       FontSize="12"
+                                       TextColor="#546E7A"
+                                       LineBreakMode="WordWrap"/>
+
+                                <!-- Total -->
+                                <Border BackgroundColor="#E8F5E9"
+                                        Stroke="#A5D6A7"
+                                        StrokeThickness="1"
+                                        Padding="10,6">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8"/>
+                                    </Border.StrokeShape>
+                                    <Label Text="{Binding Total, StringFormat='💰 Total cobrado: ${0:0.00}'}"
+                                           FontSize="17"
+                                           FontAttributes="Bold"
+                                           TextColor="#2E7D32"
+                                           HorizontalOptions="Center"/>
+                                </Border>
+
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

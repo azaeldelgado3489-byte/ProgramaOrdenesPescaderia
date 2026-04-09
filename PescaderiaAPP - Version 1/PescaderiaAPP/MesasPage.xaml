@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PescaderiaAPP.MesasPage"
+             Title="">
+
+    <VerticalStackLayout x:Name="PaginaLayout" Padding="16" Spacing="12">
+
+        <Label x:Name="SinOrdenesLabel"
+               Text="No hay mesas activas"
+               FontSize="16"
+               TextColor="Gray"
+               HorizontalOptions="Center"
+               Margin="0,40,0,0"
+             />
+
+        <CollectionView x:Name="MesasCollection"
+                        SelectionMode="None">
+
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical"
+                                 Span="2"
+                                 HorizontalItemSpacing="10"
+                                 VerticalItemSpacing="19">
+
+                </GridItemsLayout>
+
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="White"
+                            Stroke="#444"
+                            StrokeThickness="1"
+                            Padding="12">
+
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="12" />
+                        </Border.StrokeShape>
+
+                        <VerticalStackLayout Spacing="0">
+
+                            <!--Encabezado de la orden-->
+                            <Label Text="{Binding Mesa}"
+                              FontSize="20"
+                              FontAttributes="Bold"
+                              TextColor="White"
+                              BackgroundColor="#3949AB"
+                              Padding="12,8"
+                              HorizontalOptions="Fill">
+                            </Label>
+
+
+                            <!--Contenido de la orden-->
+                            <VerticalStackLayout Padding="12" Spacing="6">
+                                <Label Text="{Binding Mesa}"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   TextColor="White"/>
+                                <Label Text="{Binding Resumen}"
+                                   FontSize="11"
+                                   TextColor="#AAAAAA"/>
+                                <Label Text="{Binding Total, StringFormat='${0:0.00}'}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#4CAF50" />
+                                <Button Text="Cerrar Mesa"
+                                    BackgroundColor="#C62828"
+                                    TextColor="White"
+                                    FontSize="12"
+                                    Clicked="OnCerrarMesa"
+                                    CommandParameter="{Binding Mesa}"/>
+                            </VerticalStackLayout>
+                        </VerticalStackLayout>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+
+    </VerticalStackLayout>
+
+
+</ContentPage>

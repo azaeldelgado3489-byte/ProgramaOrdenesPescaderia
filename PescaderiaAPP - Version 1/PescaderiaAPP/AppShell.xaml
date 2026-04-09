@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:local="clr-namespace:PescaderiaAPP"
+       x:Class="PescaderiaAPP.AppShell"
+       Shell.BackgroundColor="#1A3A5C"
+       Shell.TitleColor="White"
+       Shell.ForegroundColor="White">
+
+    <Shell.TitleView>
+        <Grid HorizontalOptions="Fill">
+            <HorizontalStackLayout HorizontalOptions="Center" 
+                               VerticalOptions="Center" 
+                               Spacing="10">
+
+                <Border WidthRequest="40"
+                    HeightRequest="40"
+                    StrokeThickness="0">
+                    <Border.StrokeShape>
+                        <Ellipse/>
+                    </Border.StrokeShape>
+                    <Image Source="logopescaderia.jpg"
+                       Aspect="AspectFill"
+                       WidthRequest="40"
+                       HeightRequest="40"/>
+                </Border>
+
+                <VerticalStackLayout VerticalOptions="Center" Spacing="0">
+                    <Label Text="Pescadería"
+                       FontSize="11"
+                       TextColor="White"
+                       Opacity="0.85"/>
+                    <Label Text="Puerto Vallarta"
+                       FontSize="15"
+                       FontAttributes="Bold"
+                       TextColor="White"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+        </Grid>
+    </Shell.TitleView>
+
+    <TabBar>
+        <ShellContent Title="📋 Orden"
+                      ContentTemplate="{DataTemplate local:MainPage}"/>
+        <ShellContent Title="🪑 Mesas"
+                      ContentTemplate="{DataTemplate local:MesasPage}"/>
+
+        <ShellContent Title="📜 Historial" ContentTemplate="{DataTemplate local:HistorialPage}">
+            
+        </ShellContent>
+    </TabBar>
+
+</Shell>
